@@ -25,17 +25,17 @@ function About() {
             About<span className="text-accent">.</span>
           </h2>
           <p className="mt-6 text-base leading-relaxed text-text-muted sm:text-lg">
-            I&apos;m Kenneth — a 2nd year IT student at San Sebastian
+            I&apos;m Kenneth, a 2nd year IT student at San Sebastian
             College-Recoletos in Manila, working toward becoming a full-stack
-            developer. I blend development and design because I believe good
-            software should feel as good as it functions.
+            developer. I care about writing clean code and building things that
+            actually work well. If something can be built, I want to understand
+            how and then make my own version of it.
           </p>
           <p className="mt-4 text-base leading-relaxed text-text-muted sm:text-lg">
-            I&apos;m the kind of person who&apos;ll spend an extra hour
-            automating something just to save five minutes forever. Call it
-            efficient laziness — I find the smartest path to get things done
-            right. Outside of code, you&apos;ll find me in a Valorant lobby,
-            grinding TFT, petting cats, or defending fried rice supremacy.
+            I learn best by doing: picking up projects, breaking things, and
+            figuring it out along the way. Outside of code, you&apos;ll find me
+            in a Valorant lobby, grinding TFT, petting cats, or defending fried
+            rice supremacy.
           </p>
 
           {/* Stack pills */}

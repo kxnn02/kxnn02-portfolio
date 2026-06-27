@@ -131,7 +131,7 @@ function Hero() {
           transition={{ delay: 1.3, duration: 0.7 }}
         >
           2nd year IT student at San Sebastian College-Recoletos, Manila.
-          Aspiring full-stack developer — finding the smartest path to get things done.
+          Aspiring full-stack developer finding the smartest path to get things done.
         </motion.p>
       </motion.div>
 
