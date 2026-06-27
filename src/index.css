@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme ===== */
+@theme {
+  --color-bg: #0d0d0d;
+  --color-surface: #1a1a1a;
+  --color-accent: #a78bfa;
+  --color-accent-dim: #7c5cbf;
+  --color-text: #f5f5f5;
+  --color-text-muted: #a0a0a0;
+
+  --font-display: "Syne", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ===== Base Styles ===== */
+@layer base {
+  * {
+    cursor: none;
+  }
+
+  html {
+    /* Lenis handles smooth scrolling */
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  /* Hide scrollbar for cleaner look (optional) */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-dim);
+  }
+}
+
+/* ===== Marquee Animation ===== */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* ===== Scroll indicator bounce ===== */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* ===== Navbar blur backdrop ===== */
+@layer components {
+  nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(13, 13, 13, 0.7);
+  }
+}
+
+/* ===== Animated gradient text ===== */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-gradient-text {
+  background: linear-gradient(
+    270deg,
+    #a78bfa,
+    #7c3aed,
+    #6366f1,
+    #818cf8,
+    #a78bfa
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* ===== Glitch effect on hero name ===== */
+@keyframes glitch-flicker {
+  0%, 92%, 94%, 96%, 100% {
+    opacity: 1;
+    transform: translate(0);
+    text-shadow: none;
+  }
+  93% {
+    opacity: 0.85;
+    transform: translate(-2px, 1px);
+    text-shadow:
+      2px 0 #a78bfa,
+      -2px 0 #6366f1;
+  }
+  95% {
+    opacity: 0.9;
+    transform: translate(1px, -1px);
+    text-shadow:
+      -1px 0 #a78bfa,
+      1px 0 #6366f1;
+  }
+}
+
+.hero-glitch {
+  animation: glitch-flicker 5s ease-in-out infinite;
+}
