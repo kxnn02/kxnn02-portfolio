@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 /**
- * GradientFollow — a large radial gradient spotlight that follows
+ * GradientFollow - a large radial gradient spotlight that follows
  * the mouse across the entire page. Adds depth and interactivity
- * to the dark background.
+ * to the dark background. Disabled on touch devices.
  */
 function GradientFollow() {
   const mouseX = useMotionValue(0)
@@ -14,6 +14,9 @@ function GradientFollow() {
   const y = useSpring(mouseY, { damping: 30, stiffness: 100 })
 
   useEffect(() => {
+    // Skip on touch devices
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return
+
     const handleMove = (e) => {
       mouseX.set(e.clientX)
       mouseY.set(e.clientY + window.scrollY)

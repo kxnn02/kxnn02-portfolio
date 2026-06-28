@@ -57,6 +57,7 @@ function About() {
             <img
               src="/portrait.jpg"
               alt="Kenneth Clein Fernandez"
+              loading="lazy"
               className="h-full w-full object-cover"
             />
           </div>

@@ -2,14 +2,12 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, animate } from 'framer-motion'
 
 /**
- * CustomCursor — a dot + ring cursor that reacts to what it's hovering.
- * - Default: small dot + outer ring
- * - Interactive elements (a, button): ring expands, dot hides
- * - Text: ring shrinks to a thin line cursor
- * Gives every hover a crafted, intentional feel.
+ * CustomCursor - dot + ring cursor that reacts to hover state.
+ * Completely hidden on touch/mobile devices.
  */
 function CustomCursor() {
   const [cursorVariant, setCursorVariant] = useState('default')
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
 
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
@@ -19,16 +17,21 @@ function CustomCursor() {
   const dotX = useSpring(cursorX, dotConfig)
   const dotY = useSpring(cursorY, dotConfig)
 
-  // Outer ring — trails slightly
+  // Outer ring
   const ringConfig = { damping: 18, stiffness: 140, mass: 0.7 }
   const ringX = useSpring(cursorX, ringConfig)
   const ringY = useSpring(cursorY, ringConfig)
 
-  // Ring size animation
+  // Ring size
   const ringSize = useMotionValue(40)
   const springRingSize = useSpring(ringSize, { damping: 20, stiffness: 200 })
 
   useEffect(() => {
+    // Detect touch device
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    setIsTouchDevice(isTouch)
+    if (isTouch) return
+
     const handleMouseMove = (e) => {
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
@@ -60,7 +63,9 @@ function CustomCursor() {
     }
   }, [cursorX, cursorY, ringSize])
 
-  // Variant-based styles
+  // Don't render on touch devices
+  if (isTouchDevice) return null
+
   const dotVariants = {
     default: { scale: 1, opacity: 1 },
     interactive: { scale: 0, opacity: 0 },

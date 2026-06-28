@@ -17,6 +17,10 @@ function ParticleField() {
     let width = window.innerWidth
     let height = window.innerHeight
 
+    // Skip particle field on small screens for performance
+    const isSmallScreen = width < 768
+    if (isSmallScreen) return
+
     const resize = () => {
       width = window.innerWidth
       height = window.innerHeight

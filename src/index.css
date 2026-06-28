@@ -15,8 +15,11 @@
 
 /* ===== Base Styles ===== */
 @layer base {
-  * {
-    cursor: none;
+  /* Hide default cursor only on devices with a fine pointer (mouse) */
+  @media (pointer: fine) {
+    * {
+      cursor: none;
+    }
   }
 
   html {
