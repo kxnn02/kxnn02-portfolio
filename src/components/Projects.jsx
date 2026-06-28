@@ -3,8 +3,8 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 import ScrambleText from './ScrambleText'
 
 /**
- * Projects — editorial project list with floating image preview on hover
- * and text scramble effect on project names.
+ * Projects - editorial list on desktop with hover preview,
+ * responsive card grid on tablet/mobile.
  */
 
 const projects = [
@@ -44,7 +44,6 @@ function Projects() {
   const [hoveredIdx, setHoveredIdx] = useState(null)
   const containerRef = useRef(null)
 
-  // Mouse position for floating image
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const springX = useSpring(mouseX, { damping: 20, stiffness: 200 })
@@ -59,10 +58,10 @@ function Projects() {
   }
 
   return (
-    <section id="projects" className="relative z-10 px-6 py-28 sm:px-12 lg:px-24">
+    <section id="projects" className="relative z-10 px-5 py-20 sm:px-10 sm:py-28 md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
         <motion.h2
-          className="font-display text-4xl font-800 sm:text-5xl"
+          className="font-display text-3xl font-800 sm:text-4xl md:text-5xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -71,15 +70,15 @@ function Projects() {
           Projects<span className="text-accent">.</span>
         </motion.h2>
 
-        {/* Desktop: editorial list with hover image + scramble text */}
+        {/* Desktop: editorial list with hover image */}
         <div
           ref={containerRef}
           className="relative mt-14 hidden lg:block"
           onMouseMove={handleMouseMove}
         >
-          {/* Floating preview image */}
+          {/* Floating preview */}
           <motion.div
-            className="pointer-events-none absolute z-10 h-[300px] w-[420px] overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl"
+            className="pointer-events-none absolute z-10 h-[280px] w-[400px] overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl"
             style={{ x: springX, y: springY }}
             animate={{
               opacity: hoveredIdx !== null && projects[hoveredIdx]?.image ? 1 : 0,
@@ -100,7 +99,7 @@ function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={project.name}
-              className="group flex items-center justify-between border-b border-white/10 py-8 first:border-t"
+              className="group flex items-center justify-between border-b border-white/10 py-7 first:border-t xl:py-8"
               onMouseEnter={() => setHoveredIdx(i)}
               onMouseLeave={() => setHoveredIdx(null)}
               initial={{ opacity: 0, y: 30 }}
@@ -108,21 +107,21 @@ function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="flex items-baseline gap-6">
+              <div className="flex items-baseline gap-4 xl:gap-6">
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-display text-3xl font-700 transition-colors group-hover:text-accent xl:text-4xl"
+                  className="font-display text-2xl font-700 transition-colors group-hover:text-accent xl:text-4xl"
                 >
                   <ScrambleText text={project.name} />
                 </a>
-                <span className="text-xs font-500 uppercase tracking-widest text-text-muted">
+                <span className="text-[10px] font-500 uppercase tracking-widest text-text-muted xl:text-xs">
                   {project.category}
                 </span>
               </div>
 
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 xl:gap-6">
                 <div className="hidden gap-2 xl:flex">
                   {project.stack.map((tech) => (
                     <span
@@ -134,7 +133,7 @@ function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 text-sm font-500 opacity-0 transition-opacity group-hover:opacity-100">
+                <div className="flex items-center gap-3 text-sm font-500 opacity-0 transition-opacity group-hover:opacity-100">
                   <a
                     href={project.link}
                     target="_blank"
@@ -159,19 +158,19 @@ function Projects() {
           ))}
         </div>
 
-        {/* Mobile: stacked cards */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:hidden">
+        {/* Tablet & Mobile: card grid */}
+        <div className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 md:gap-6 lg:hidden">
           {projects.map((project, i) => (
             <motion.a
               key={project.name}
               href={project.live || project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface transition-colors hover:border-accent/40"
-              initial={{ opacity: 0, y: 40 }}
+              className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-surface transition-colors hover:border-accent/40 sm:rounded-2xl"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
             >
               {/* Image */}
               <div className="aspect-video w-full overflow-hidden bg-bg">
@@ -189,21 +188,21 @@ function Projects() {
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col p-5">
-                <span className="text-xs font-500 uppercase tracking-widest text-accent">
+              <div className="flex flex-1 flex-col p-4 sm:p-5">
+                <span className="text-[10px] font-500 uppercase tracking-widest text-accent sm:text-xs">
                   {project.category}
                 </span>
-                <h3 className="font-display mt-2 text-xl font-700">
+                <h3 className="font-display mt-1.5 text-lg font-700 sm:mt-2 sm:text-xl">
                   {project.name}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
+                <p className="mt-1.5 flex-1 text-xs leading-relaxed text-text-muted sm:mt-2 sm:text-sm">
                   {project.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full bg-bg px-3 py-1 text-xs text-text-muted"
+                      className="rounded-full bg-bg px-2.5 py-0.5 text-[10px] text-text-muted sm:px-3 sm:py-1 sm:text-xs"
                     >
                       {tech}
                     </span>

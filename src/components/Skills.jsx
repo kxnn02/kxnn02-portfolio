@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion'
 
 /**
- * Skills — inspired by itsjay.us's "MODERN TECHSTACK" section.
- * Shows tools as linked items with hover effects, plus a
- * three-column text breakdown below.
+ * Skills - tech pills + three-column breakdown.
+ * Pills wrap naturally on all screen sizes.
  */
 
 const techLinks = [
@@ -36,27 +35,26 @@ const columns = [
 
 function Skills() {
   return (
-    <section id="skills" className="px-6 py-28 sm:px-12 lg:px-24">
+    <section id="skills" className="px-5 py-20 sm:px-10 sm:py-28 md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
-        {/* Section header with repeated text effect */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-4xl font-800 sm:text-5xl">
+          <h2 className="font-display text-3xl font-800 sm:text-4xl md:text-5xl">
             Skills<span className="text-accent">.</span>
           </h2>
-          <p className="mt-3 text-sm uppercase tracking-widest text-text-muted">
+          <p className="mt-2 text-xs uppercase tracking-widest text-text-muted sm:mt-3 sm:text-sm">
             Professional at
           </p>
         </motion.div>
 
-        {/* Linked tech strip */}
+        {/* Tech pills */}
         <motion.div
-          className="mt-10 flex flex-wrap gap-3"
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-8 flex flex-wrap gap-2 sm:mt-10 sm:gap-3"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -67,7 +65,7 @@ function Skills() {
               href={tech.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/10 bg-surface px-5 py-2.5 text-sm font-500 text-text transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(167,139,250,0.15)]"
+              className="rounded-full border border-white/10 bg-surface px-3.5 py-2 text-xs font-500 text-text transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(167,139,250,0.15)] sm:px-5 sm:py-2.5 sm:text-sm"
             >
               {tech.name}
             </a>
@@ -76,20 +74,20 @@ function Skills() {
 
         {/* Three-column breakdown */}
         <motion.div
-          className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-3"
-          initial={{ opacity: 0, y: 40 }}
+          className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 lg:gap-12"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
         >
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="font-display text-lg font-700 text-accent">
+              <h3 className="font-display text-base font-700 text-accent sm:text-lg">
                 {col.title}
               </h3>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-3 space-y-1.5 sm:mt-4 sm:space-y-2">
                 {col.items.map((item) => (
-                  <li key={item} className="text-sm text-text-muted">
+                  <li key={item} className="text-xs text-text-muted sm:text-sm">
                     {item}
                   </li>
                 ))}
