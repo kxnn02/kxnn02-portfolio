@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 
 /**
- * Navbar - sticky nav with section anchors for fast recruiter navigation.
+ * Navbar - sticky nav with section anchors and resume download.
  */
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -27,7 +27,7 @@ function Navbar() {
         </a>
       </MagneticButton>
 
-      {/* Section links - visible on md+ */}
+      {/* Section links + resume - visible on md+ */}
       <div className="hidden items-center gap-8 md:flex">
         {navLinks.map((link) => (
           <a
@@ -38,6 +38,14 @@ function Navbar() {
             {link.label}
           </a>
         ))}
+        <a
+          href="/kenneth-fernandez-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs uppercase tracking-widest text-accent transition-colors hover:text-text"
+        >
+          Resume
+        </a>
       </div>
 
       <MagneticButton>

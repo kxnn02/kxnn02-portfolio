@@ -35,7 +35,7 @@ function Preloader({ onComplete }) {
         <motion.div
           className="fixed inset-0 z-[10000] flex items-center justify-center bg-bg"
           exit={{ y: '-100%' }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         >
           <motion.span
             className="font-display text-7xl font-800 tabular-nums text-text sm:text-9xl"

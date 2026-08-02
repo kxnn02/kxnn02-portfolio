@@ -31,7 +31,7 @@ function Hero() {
   const charContainer = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: 0.035, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.03, delayChildren: 0.1 },
     },
   }
 
@@ -41,16 +41,16 @@ function Hero() {
       opacity: 1,
       y: 0,
       rotateZ: 0,
-      transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
     },
   }
 
   const lineVariant = {
-    hidden: { opacity: 0, y: 35 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
     },
   }
 

@@ -118,7 +118,7 @@ function AnimatedTerminal() {
           <div key={i} className="min-h-[1.25rem]">
             {line.type === 'command' ? (
               <span>
-                <span className="text-green-400">$</span>{' '}
+                <span className="text-green-400 transition-[text-shadow] duration-300" style={{ textShadow: i === displayedLines.length - 1 && line.type === 'command' ? '0 0 8px rgba(74,222,128,0.6)' : 'none' }}>$</span>{' '}
                 <span className="text-text">{line.text}</span>
               </span>
             ) : (

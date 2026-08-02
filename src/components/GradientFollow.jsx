@@ -1,56 +1,58 @@
-import { useEffect } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 /**
- * GradientFollow - a large radial gradient spotlight that follows
- * the mouse across the entire page. Adds depth and interactivity
- * to the dark background. Disabled on touch devices.
+ * GradientFollow - radial gradient spotlight following the mouse.
+ * Uses direct style manipulation for hardware acceleration instead
+ * of Framer Motion's x/y props which run on the main thread.
+ * Disabled on touch devices.
  */
 function GradientFollow() {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const x = useSpring(mouseX, { damping: 30, stiffness: 100 })
-  const y = useSpring(mouseY, { damping: 30, stiffness: 100 })
+  const ref = useRef(null)
+  const pos = useRef({ x: 0, y: 0 })
+  const target = useRef({ x: 0, y: 0 })
+  const raf = useRef(null)
 
   useEffect(() => {
     // Skip on touch devices
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return
 
+    const lerp = (a, b, t) => a + (b - a) * t
+
+    const animate = () => {
+      pos.current.x = lerp(pos.current.x, target.current.x, 0.06)
+      pos.current.y = lerp(pos.current.y, target.current.y, 0.06)
+
+      if (ref.current) {
+        ref.current.style.transform = `translate3d(${pos.current.x - 300}px, ${pos.current.y - 300}px, 0)`
+      }
+
+      raf.current = requestAnimationFrame(animate)
+    }
+
     const handleMove = (e) => {
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY + window.scrollY)
+      target.current.x = e.clientX
+      target.current.y = e.clientY
     }
 
     window.addEventListener('mousemove', handleMove)
-    return () => window.removeEventListener('mousemove', handleMove)
-  }, [mouseX, mouseY])
+    raf.current = requestAnimationFrame(animate)
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove)
+      if (raf.current) cancelAnimationFrame(raf.current)
+    }
+  }, [])
 
   return (
-    <motion.div
-      className="pointer-events-none fixed inset-0 z-0 opacity-40"
-      aria-hidden="true"
+    <div
+      ref={ref}
+      className="pointer-events-none fixed z-0 h-[600px] w-[600px] rounded-full opacity-40 will-change-transform"
       style={{
-        background: `radial-gradient(800px circle at var(--mx) var(--my), rgba(167,139,250,0.06), transparent 60%)`,
+        background: 'radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%)',
+        filter: 'blur(60px)',
       }}
-    >
-      {/* We use a nested div with motion styles for the gradient position */}
-      <motion.div
-        className="h-full w-full"
-        style={{
-          background: 'radial-gradient(600px circle at center, rgba(167,139,250,0.07), transparent 60%)',
-          x: x,
-          y: y,
-          position: 'fixed',
-          top: '-300px',
-          left: '-300px',
-          width: '600px',
-          height: '600px',
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-        }}
-      />
-    </motion.div>
+      aria-hidden="true"
+    />
   )
 }
 

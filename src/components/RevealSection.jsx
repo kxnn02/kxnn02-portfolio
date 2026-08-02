@@ -2,21 +2,23 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 /**
- * RevealSection - wraps a section with a clip-path reveal animation.
- * As the section scrolls into view, it expands from a circle/rectangle
- * to full visibility with a smooth transition.
+ * RevealSection - wraps a section with a blur-to-clear reveal.
+ * Uses a strong ease-out curve for snappy entrance.
  */
 function RevealSection({ children, className = '' }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.15 })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 60, filter: 'blur(8px)' }}
+      initial={{ opacity: 0, y: 50, filter: 'blur(6px)' }}
       animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-      transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{
+        duration: 0.75,
+        ease: [0.23, 1, 0.32, 1], // Strong ease-out
+      }}
     >
       {children}
     </motion.div>

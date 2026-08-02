@@ -15,8 +15,8 @@ const featured = [
       'Real-time campus communication system with push notifications for class suspensions and emergencies. Led a 5-person team through beta testing with real students.',
     stack: ['React Native', 'Next.js', 'Supabase', 'TypeScript'],
     link: 'https://github.com/kxnn02/campus-currents',
-    live: null,
-    image: null,
+    live: 'https://campus-currents-website-37ddsyieu-kxnn02s-projects.vercel.app/',
+    image: '/campuscurrents.png',
   },
   {
     name: 'PasaBuy',
@@ -79,15 +79,15 @@ function Projects() {
           Projects<span className="text-accent">.</span>
         </motion.h2>
 
-        {/* Featured projects - desktop editorial list */}
+        {/* Featured projects - desktop editorial list (hover-capable devices only for effects) */}
         <div
           ref={containerRef}
           className="relative mt-14 hidden lg:block"
           onMouseMove={handleMouseMove}
         >
-          {/* Floating preview */}
+          {/* Floating preview - hover only */}
           <motion.div
-            className="pointer-events-none absolute z-10 h-[280px] w-[400px] overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl"
+            className="hover-only pointer-events-none absolute z-10 h-[280px] w-[400px] overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl"
             style={{ x: springX, y: springY }}
             animate={{
               opacity: hoveredIdx !== null && featured[hoveredIdx]?.image ? 1 : 0,
@@ -96,7 +96,7 @@ function Projects() {
             transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.3 } }}
           >
             {hoveredIdx !== null && featured[hoveredIdx]?.image && (
-              <img src={featured[hoveredIdx].image} alt="" className="h-full w-full object-cover" />
+              <img src={featured[hoveredIdx].image} alt={featured[hoveredIdx].name} className="h-full w-full object-cover" />
             )}
           </motion.div>
 
@@ -110,7 +110,7 @@ function Projects() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
             >
               <div className="flex items-baseline justify-between">
                 <div className="flex items-baseline gap-5">
@@ -169,7 +169,7 @@ function Projects() {
             >
               {project.image && (
                 <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-bg">
-                  <img src={project.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <img src={project.image} alt={project.name} loading="lazy" className="h-full w-full object-cover" />
                 </div>
               )}
               <div>

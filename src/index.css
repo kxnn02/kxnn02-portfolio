@@ -38,6 +38,28 @@
     color: var(--color-bg);
   }
 
+  /* Visible focus ring for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Press feedback on all interactive elements */
+  a:not(.no-press), button, [role="button"] {
+    transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  a:not(.no-press):active, button:active, [role="button"]:active {
+    transform: scale(0.97);
+  }
+
+  /* Gate hover animations for mouse-only devices */
+  @media not all and (hover: hover) and (pointer: fine) {
+    .hover-only {
+      display: none !important;
+    }
+  }
+
   /* Hide scrollbar for cleaner look (optional) */
   ::-webkit-scrollbar {
     width: 6px;
@@ -65,23 +87,38 @@
 }
 
 .animate-marquee {
-  animation: marquee 25s linear infinite;
+  animation: marquee 25s linear infinite !important;
 }
 
 /* ===== Scroll indicator pulse ===== */
-@keyframes float-down {
+@keyframes fade-pulse {
   0%, 100% {
-    transform: translateY(0);
     opacity: 1;
   }
   50% {
-    transform: translateY(6px);
-    opacity: 0.6;
+    opacity: 0.3;
   }
 }
 
 .animate-float-down {
-  animation: float-down 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: fade-pulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ===== Reduced motion: disable all custom animations ===== */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float-down,
+  .hero-glitch,
+  .hero-gradient-text {
+    animation: none !important;
+  }
+}
+
+/* Disable press transitions in reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  a:not(.no-press):active, button:active, [role="button"]:active {
+    transform: none !important;
+  }
 }
 
 /* ===== Navbar blur backdrop ===== */

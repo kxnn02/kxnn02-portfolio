@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 /**
- * Experience - timeline section with roles and involvements.
+ * Experience - timeline section. DEVCON entry expanded as a mini case study.
  */
 
 const experiences = [
@@ -10,9 +10,14 @@ const experiences = [
     company: 'DEVCON Kids Hub / DevKids Op',
     type: 'Volunteer',
     period: 'Jul 2026 - Present',
-    description:
-      'Part of a 4-person team building a web platform for DEVCON Kids. Engineered a RAG-powered chatbot using document chunking, vector embeddings, and retrieval strategies. Built automation tools including an AI caption generator for social media.',
     current: true,
+    // Case study format for the strongest entry
+    caseStudy: {
+      problem: 'DEVCON Kids needed a centralized platform for event management, volunteer onboarding, and chapter operations. Volunteers repeatedly asked the same operational questions that were buried across scattered documents.',
+      built: 'Engineered a RAG-powered chatbot that answers operational questions using DEVCON\'s internal documents. Built the knowledgebase infrastructure from scratch: document chunking, vector embeddings, and retrieval strategies. Also developed automation tools including an AI caption generator for social media posts.',
+      result: 'Part of a 4-person team. The chatbot now serves as the first line of support for new volunteers, reducing repetitive questions and speeding up onboarding.',
+      tech: ['RAG', 'Vector Embeddings', 'Document Chunking', 'AI'],
+    },
   },
   {
     role: '2nd Year Representative',
@@ -103,9 +108,41 @@ function Experience() {
                       {exp.type}
                     </span>
                   </div>
-                  <p className="mt-2 text-xs leading-relaxed text-text-muted sm:mt-3 sm:max-w-lg sm:text-sm">
-                    {exp.description}
-                  </p>
+
+                  {/* Case study format for DEVCON */}
+                  {exp.caseStudy ? (
+                    <div className="mt-4 space-y-3 sm:mt-5">
+                      <div>
+                        <span className="text-[10px] font-600 uppercase tracking-widest text-text-muted sm:text-xs">Problem</span>
+                        <p className="mt-1 text-xs leading-relaxed text-text-muted sm:max-w-xl sm:text-sm">
+                          {exp.caseStudy.problem}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-600 uppercase tracking-widest text-text-muted sm:text-xs">What I Built</span>
+                        <p className="mt-1 text-xs leading-relaxed text-text-muted sm:max-w-xl sm:text-sm">
+                          {exp.caseStudy.built}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-600 uppercase tracking-widest text-text-muted sm:text-xs">Impact</span>
+                        <p className="mt-1 text-xs leading-relaxed text-text-muted sm:max-w-xl sm:text-sm">
+                          {exp.caseStudy.result}
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {exp.caseStudy.tech.map((t) => (
+                          <span key={t} className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[10px] font-500 text-accent sm:text-xs">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="mt-2 text-xs leading-relaxed text-text-muted sm:mt-3 sm:max-w-lg sm:text-sm">
+                      {exp.description}
+                    </p>
+                  )}
                 </div>
 
                 <span className="mt-1 shrink-0 text-[10px] font-500 uppercase tracking-widest text-text-muted sm:mt-0 sm:text-xs">
