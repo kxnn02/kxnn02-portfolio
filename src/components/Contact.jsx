@@ -79,6 +79,21 @@ function Contact() {
               </svg>
             </a>
           </MagneticButton>
+
+          {/* Resume download */}
+          <MagneticButton>
+            <a
+              href="/kenneth-fernandez-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-surface text-text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(167,139,250,0.2)] sm:h-12 sm:w-12"
+              aria-label="Download Resume"
+            >
+              <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 18h16" />
+              </svg>
+            </a>
+          </MagneticButton>
         </motion.div>
       </div>
 
