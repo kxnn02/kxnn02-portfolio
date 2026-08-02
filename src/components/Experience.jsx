@@ -1,36 +1,35 @@
 import { motion } from 'framer-motion'
 
 /**
- * Experience - timeline section. Fully responsive with
- * stacked layout on mobile and side-by-side on sm+.
+ * Experience - timeline section with roles and involvements.
  */
 
 const experiences = [
   {
-    role: 'Backend AI Engineer Intern',
-    company: 'FlyRank AI',
-    type: 'Remote',
-    period: 'June 2026 - Present',
+    role: 'Contributing Developer, AI/Automation',
+    company: 'DEVCON Kids Hub / DevKids Op',
+    type: 'Volunteer',
+    period: 'Jul 2026 - Present',
     description:
-      'Working on AI-powered backend systems. Building and integrating intelligent services at scale.',
+      'Part of a 4-person team building a web platform for DEVCON Kids. Engineered a RAG-powered chatbot using document chunking, vector embeddings, and retrieval strategies. Built automation tools including an AI caption generator for social media.',
     current: true,
-  },
-  {
-    role: 'Incoming Intern, Digital Solutions',
-    company: 'Philippine Coast Guard',
-    type: 'On-site',
-    period: 'Upcoming',
-    description:
-      'Part of an academic-industry collaboration between SSCR Manila and PCG to develop innovative digital solutions for lighthouse operations nationwide.',
-    current: false,
   },
   {
     role: '2nd Year Representative',
     company: 'JPCS, SSCR Manila',
     type: 'Organization',
-    period: '2026 - Present',
+    period: '2025 - 2026',
     description:
-      'Representing the 2nd year IT students in the Junior Philippine Computer Society, helping organize events and initiatives for the department.',
+      'Representing 2nd year IT students in the Junior Philippine Computer Society, organizing events and initiatives for the department.',
+    current: true,
+  },
+  {
+    role: 'Skill Builder Member',
+    company: 'AWS Learning Club Heron',
+    type: 'Cloud',
+    period: 'Jul 2026 - Present',
+    description:
+      'Building cloud skills through AWS learning paths and community-driven study sessions.',
     current: true,
   },
 ]

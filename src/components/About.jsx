@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
 
 /**
- * About - two-column section. Stacks vertically on mobile,
- * photo above text on small screens for immediate visual impact.
+ * About - two-column section with bio and photo.
  */
 function About() {
-  const stack = ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind', 'Figma']
+  const stack = ['HTML', 'CSS', 'JavaScript', 'React', 'Python', 'Java', 'Supabase', 'Tailwind']
 
   return (
     <section id="about" className="px-5 py-20 sm:px-10 sm:py-28 md:px-12 lg:px-24">
@@ -16,7 +15,7 @@ function About() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        {/* Photo - shows first on mobile for visual impact */}
+        {/* Photo */}
         <div className="flex justify-center lg:order-2 lg:justify-end">
           <div className="h-56 w-56 overflow-hidden rounded-2xl border border-white/10 bg-surface sm:h-72 sm:w-72 md:h-80 md:w-80 lg:rounded-3xl">
             <img
@@ -28,17 +27,16 @@ function About() {
           </div>
         </div>
 
-        {/* Text column */}
+        {/* Text */}
         <div className="lg:order-1">
           <h2 className="font-display text-3xl font-800 sm:text-4xl md:text-5xl">
             About<span className="text-accent">.</span>
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-text-muted sm:mt-6 sm:text-base md:text-lg">
-            I&apos;m Kenneth, a 2nd year IT student at San Sebastian
-            College-Recoletos in Manila, working toward becoming a full-stack
-            developer. I care about writing clean code and building things that
-            actually work well. If something can be built, I want to understand
-            how and then make my own version of it.
+            I&apos;m Kenneth, a 2nd year BS Information Technology student at
+            San Sebastian College-Recoletos in Manila. I build web apps, mobile
+            apps, AI-powered tools, and blockchain dApps. Right now I&apos;m
+            working on RAG chatbots and automation for DEVCON Kids.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-text-muted sm:mt-4 sm:text-base md:text-lg">
             I learn best by doing: picking up projects, breaking things, and

@@ -2,34 +2,36 @@ import { motion } from 'framer-motion'
 
 /**
  * Skills - tech pills + three-column breakdown.
- * Pills wrap naturally on all screen sizes.
  */
 
 const techLinks = [
   { name: 'React', url: 'https://react.dev/' },
+  { name: 'React Native', url: 'https://reactnative.dev/' },
+  { name: 'Next.js', url: 'https://nextjs.org/' },
+  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
   { name: 'Tailwind CSS', url: 'https://tailwindcss.com/' },
   { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { name: 'Vite', url: 'https://vitejs.dev/' },
+  { name: 'Python', url: 'https://www.python.org/' },
+  { name: 'Java', url: 'https://www.java.com/' },
   { name: 'Supabase', url: 'https://supabase.com/' },
-  { name: 'Figma', url: 'https://www.figma.com/' },
-  { name: 'GitHub', url: 'https://github.com/' },
-  { name: 'Framer Motion', url: 'https://motion.dev/' },
   { name: 'Rust', url: 'https://www.rust-lang.org/' },
   { name: 'Stellar', url: 'https://stellar.org/' },
+  { name: 'Git', url: 'https://git-scm.com/' },
+  { name: 'Figma', url: 'https://www.figma.com/' },
 ]
 
 const columns = [
   {
-    title: 'Dev Tools',
-    items: ['HTML / CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Supabase', 'Git & GitHub', 'Vite'],
+    title: 'Languages',
+    items: ['HTML / CSS', 'JavaScript', 'TypeScript', 'Java', 'Python', 'SQL', 'Rust'],
   },
   {
-    title: 'Design Tools',
-    items: ['Figma', 'Canva', 'Photoshop'],
+    title: 'Frameworks & Tools',
+    items: ['React', 'React Native', 'Next.js', 'Tailwind CSS', 'Supabase', 'Vite', 'Git & GitHub', 'Kiro CLI'],
   },
   {
-    title: 'Currently Learning',
-    items: ['Rust / Soroban', 'TypeScript', 'Next.js', 'Full-Stack Dev', 'Framer Motion'],
+    title: 'Currently Exploring',
+    items: ['AI / RAG Systems', 'Vector Databases', 'AWS Cloud', 'Soroban (Stellar)', 'Framer Motion'],
   },
 ]
 

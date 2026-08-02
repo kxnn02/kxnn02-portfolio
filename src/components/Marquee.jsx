@@ -8,7 +8,7 @@ function Marquee() {
   const [paused, setPaused] = useState(false)
 
   const text =
-    'Development · Web Apps · React · IT Student · Manila · Full-Stack · Blockchain · Building Things · '
+    'Development · Web Apps · React · AI/Automation · Manila · Full-Stack · Blockchain · React Native · Building Things · '
 
   return (
     <section

@@ -5,14 +5,11 @@ import AnimatedTerminal from './AnimatedTerminal'
 
 /**
  * Hero - full-viewport editorial section.
- * Two-column on desktop, single column on mobile/tablet.
- * Terminal shows on tablet (md) and above.
  */
 function Hero() {
   const name = 'Kenneth Clein'
   const containerRef = useRef(null)
 
-  // Mouse tracking for 3D tilt (desktop only, no-op on touch)
   const mouseX = useMotionValue(0.5)
   const mouseY = useMotionValue(0.5)
 
@@ -64,10 +61,8 @@ function Hero() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Particle field (hidden on mobile via component logic) */}
       <ParticleField />
 
-      {/* Layout grid */}
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 md:gap-12 lg:grid-cols-[1.2fr_1fr]">
         {/* Left: text */}
         <motion.div
@@ -123,11 +118,11 @@ function Hero() {
             transition={{ delay: 1.2, duration: 0.6 }}
           >
             2nd year IT student at San Sebastian College-Recoletos, Manila.
-            Aspiring full-stack developer finding the smartest path to get things done.
+            Silver Medalist for Academic Excellence. Building AI tools, web apps, and dApps.
           </motion.p>
         </motion.div>
 
-        {/* Right: terminal (visible md and up) */}
+        {/* Right: terminal */}
         <div className="hidden md:flex md:justify-center lg:justify-end">
           <AnimatedTerminal />
         </div>

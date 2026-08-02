@@ -3,16 +3,25 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 import ScrambleText from './ScrambleText'
 
 /**
- * Projects - editorial list on desktop with hover preview,
- * responsive card grid on tablet/mobile.
+ * Projects - editorial list on desktop, card grid on mobile/tablet.
  */
 
 const projects = [
   {
+    name: 'CampusCurrents',
+    category: 'Mobile App',
+    description:
+      'Real-time campus communication system with class suspension alerts and emergency push notifications. Led a 5-person team through beta testing.',
+    stack: ['React Native', 'Next.js', 'Supabase', 'TypeScript'],
+    link: 'https://github.com/kxnn02/campus-currents',
+    live: null,
+    image: null,
+  },
+  {
     name: 'PasaBuy',
     category: 'Blockchain / dApp',
     description:
-      'Trustless cross-border escrow for informal pasabuy transactions on Stellar.',
+      'Trustless cross-border escrow for informal pasabuy transactions on Stellar. Smart contract locks XLM and releases on delivery confirmation.',
     stack: ['Rust', 'Soroban', 'Stellar', 'Vite'],
     link: 'https://github.com/kxnn02/PasaBuy',
     live: 'https://pasa-buy.vercel.app/',
@@ -22,7 +31,7 @@ const projects = [
     name: 'Flappy Kiro',
     category: 'Game Dev',
     description:
-      'Retro-neon Flappy Bird with Steering Mode, procedural audio, and PWA support.',
+      'Retro-neon Flappy Bird with Steering Mode, procedural lo-fi audio engine, and PWA support. Zero dependencies.',
     stack: ['JavaScript', 'Canvas', 'Web Audio', 'PWA'],
     link: 'https://github.com/kxnn02/flappy-kiro',
     live: 'https://kxnn02.github.io/flappy-kiro/',
@@ -32,11 +41,21 @@ const projects = [
     name: 'StraySafe',
     category: 'Community App',
     description:
-      'Pet registration, stray reporting, treatment sponsorship & adoption platform.',
+      'Pet registration, stray reporting, treatment sponsorship & adoption platform connecting pet owners, rescuers, and barangays.',
     stack: ['HTML', 'CSS', 'JavaScript', 'Supabase'],
     link: 'https://github.com/kxnn02/StraySafe',
     live: 'https://stray-safe-nine.vercel.app/',
     image: '/straysafe.png',
+  },
+  {
+    name: 'Inventory System',
+    category: 'OOP / Java',
+    description:
+      'CLI-based inventory system applying inheritance, polymorphism, encapsulation, and interfaces across Book/Cinema item types.',
+    stack: ['Java', 'OOP', 'UML'],
+    link: 'https://github.com/kxnn02/java-simple-inventory-system-',
+    live: null,
+    image: null,
   },
 ]
 
@@ -82,7 +101,7 @@ function Projects() {
             style={{ x: springX, y: springY }}
             animate={{
               opacity: hoveredIdx !== null && projects[hoveredIdx]?.image ? 1 : 0,
-              scale: hoveredIdx !== null ? 1 : 0.9,
+              scale: hoveredIdx !== null && projects[hoveredIdx]?.image ? 1 : 0.9,
             }}
             transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.3 } }}
           >
@@ -105,7 +124,7 @@ function Projects() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
             >
               <div className="flex items-baseline gap-4 xl:gap-6">
                 <a
@@ -173,20 +192,16 @@ function Projects() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
             >
               {/* Image */}
-              <div className="aspect-video w-full overflow-hidden bg-bg">
-                {project.image ? (
+              {project.image && (
+                <div className="aspect-video w-full overflow-hidden bg-bg">
                   <img
                     src={project.image}
                     alt={`${project.name} screenshot`}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-xs text-text-muted">
-                    Screenshot coming soon
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
 
               <div className="flex flex-1 flex-col p-4 sm:p-5">
                 <span className="text-[10px] font-500 uppercase tracking-widest text-accent sm:text-xs">

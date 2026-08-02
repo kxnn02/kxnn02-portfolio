@@ -2,8 +2,7 @@ import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 
 /**
- * Contact / Footer - bold CTA with magnetic social links.
- * Responsive text sizing and spacing.
+ * Contact / Footer - bold CTA with social links and email.
  */
 function Contact() {
   return (
@@ -29,9 +28,21 @@ function Contact() {
           Got an idea, a project, or just want to say hi? I&apos;m always down to talk.
         </motion.p>
 
+        {/* Email */}
+        <motion.a
+          href="mailto:fernandezk728@gmail.com"
+          className="mt-6 inline-block text-sm text-text-muted transition-colors hover:text-accent sm:mt-8 sm:text-base"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.25, duration: 0.6 }}
+        >
+          fernandezk728@gmail.com
+        </motion.a>
+
         {/* Social links */}
         <motion.div
-          className="mt-8 flex items-center justify-center gap-4 sm:mt-10 sm:gap-6"
+          className="mt-6 flex items-center justify-center gap-4 sm:mt-8 sm:gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
