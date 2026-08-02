@@ -118,8 +118,19 @@ function Hero() {
             transition={{ delay: 1.2, duration: 0.6 }}
           >
             2nd year IT student at San Sebastian College-Recoletos, Manila.
-            Silver Medalist for Academic Excellence. Building AI tools, web apps, and dApps.
+            Building AI tools, web apps, and dApps.
           </motion.p>
+
+          {/* Achievement badge */}
+          <motion.div
+            className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 sm:mt-5"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+          >
+            <span className="text-xs text-accent sm:text-sm">★</span>
+            <span className="text-xs font-500 text-accent/90 sm:text-sm">Silver Medalist, Academic Excellence</span>
+          </motion.div>
         </motion.div>
 
         {/* Right: terminal */}
@@ -135,7 +146,7 @@ function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <span className="animate-bounce-slow inline-block text-xs tracking-widest text-text-muted uppercase sm:text-sm">
+        <span className="animate-float-down inline-block text-xs tracking-widest text-text-muted uppercase sm:text-sm">
           ↓ Scroll
         </span>
       </motion.div>

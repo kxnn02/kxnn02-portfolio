@@ -2,8 +2,14 @@ import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 
 /**
- * Navbar - sticky minimal nav. Responsive padding and font sizing.
+ * Navbar - sticky nav with section anchors for fast recruiter navigation.
  */
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+]
+
 function Navbar() {
   return (
     <motion.nav
@@ -17,9 +23,22 @@ function Navbar() {
           href="#"
           className="font-display text-xs font-700 uppercase tracking-widest text-text transition-colors hover:text-accent sm:text-sm"
         >
-          Kenneth Clein
+          KC
         </a>
       </MagneticButton>
+
+      {/* Section links - visible on md+ */}
+      <div className="hidden items-center gap-8 md:flex">
+        {navLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className="text-xs uppercase tracking-widest text-text-muted transition-colors hover:text-text"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
 
       <MagneticButton>
         <a

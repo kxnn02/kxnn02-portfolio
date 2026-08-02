@@ -68,18 +68,20 @@
   animation: marquee 25s linear infinite;
 }
 
-/* ===== Scroll indicator bounce ===== */
-@keyframes bounce-slow {
+/* ===== Scroll indicator pulse ===== */
+@keyframes float-down {
   0%, 100% {
     transform: translateY(0);
+    opacity: 1;
   }
   50% {
-    transform: translateY(8px);
+    transform: translateY(6px);
+    opacity: 0.6;
   }
 }
 
-.animate-bounce-slow {
-  animation: bounce-slow 2s ease-in-out infinite;
+.animate-float-down {
+  animation: float-down 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* ===== Navbar blur backdrop ===== */
@@ -91,27 +93,19 @@
   }
 }
 
-/* ===== Animated gradient text ===== */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ===== Hero accent text pulse ===== */
+@keyframes accent-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
 }
 
 .hero-gradient-text {
-  background: linear-gradient(
-    270deg,
-    #a78bfa,
-    #7c3aed,
-    #6366f1,
-    #818cf8,
-    #a78bfa
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 6s ease infinite;
+  color: var(--color-accent);
+  animation: accent-pulse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* ===== Glitch effect on hero name ===== */
