@@ -97,7 +97,7 @@ function Projects() {
         >
           {/* Floating preview - hover only */}
           <motion.div
-            className="hover-only pointer-events-none absolute z-10 h-[280px] w-[400px] overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl"
+            className="hover-only pointer-events-none absolute z-10 h-[280px] w-[400px] overflow-hidden rounded-xl border border-white/10 bg-bg shadow-2xl"
             style={{ x: springX, y: springY }}
             animate={{
               opacity: hoveredIdx !== null && featured[hoveredIdx]?.image ? 1 : 0,
@@ -106,7 +106,7 @@ function Projects() {
             transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.3 } }}
           >
             {hoveredIdx !== null && featured[hoveredIdx]?.image && (
-              <img src={featured[hoveredIdx].image} alt={featured[hoveredIdx].name} className="h-full w-full object-cover" />
+              <img src={featured[hoveredIdx].image} alt={featured[hoveredIdx].name} className="h-full w-full object-contain" />
             )}
           </motion.div>
 
