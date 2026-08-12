@@ -9,6 +9,16 @@ import ScrambleText from './ScrambleText'
 
 const featured = [
   {
+    name: 'DevKids Op',
+    category: 'AI / Automation',
+    description:
+      'Web platform for DEVCON Kids with a RAG-powered chatbot, knowledgebase infrastructure, and AI caption generator. Built as part of a 4-person volunteer team.',
+    stack: ['RAG', 'Vector DB', 'Next.js', 'AI'],
+    link: 'https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0',
+    live: 'https://devcon-kids-hub.vercel.app/',
+    image: null,
+  },
+  {
     name: 'CampusCurrents',
     category: 'Mobile App',
     description:
