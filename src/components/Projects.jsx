@@ -16,7 +16,7 @@ const featured = [
     stack: ['RAG', 'Vector DB', 'Next.js', 'AI'],
     link: 'https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0',
     live: 'https://devcon-kids-hub.vercel.app/',
-    image: null,
+    image: '/devkidsop.png',
   },
   {
     name: 'CampusCurrents',
