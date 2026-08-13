@@ -41,8 +41,7 @@ function About() {
           <p className="mt-3 text-sm leading-relaxed text-text-muted sm:mt-4 sm:text-base md:text-lg">
             I learn best by doing: picking up projects, breaking things, and
             figuring it out along the way. Outside of code, you&apos;ll find me
-            in a Valorant lobby, grinding TFT, petting cats, or defending fried
-            rice supremacy.
+            in a Valorant lobby, grinding TFT, or petting cats.
           </p>
 
           {/* Stack pills */}
