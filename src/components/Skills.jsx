@@ -5,19 +5,11 @@ import { motion } from 'framer-motion'
  */
 
 const techLinks = [
-  { name: 'React', url: 'https://react.dev/' },
-  { name: 'React Native', url: 'https://reactnative.dev/' },
-  { name: 'Next.js', url: 'https://nextjs.org/' },
-  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
-  { name: 'Tailwind CSS', url: 'https://tailwindcss.com/' },
+  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+  { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
   { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   { name: 'Python', url: 'https://www.python.org/' },
   { name: 'Java', url: 'https://www.java.com/' },
-  { name: 'Supabase', url: 'https://supabase.com/' },
-  { name: 'Rust', url: 'https://www.rust-lang.org/' },
-  { name: 'Stellar', url: 'https://stellar.org/' },
-  { name: 'Git', url: 'https://git-scm.com/' },
-  { name: 'Figma', url: 'https://www.figma.com/' },
 ]
 
 const columns = [
